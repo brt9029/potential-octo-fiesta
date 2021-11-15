@@ -10,7 +10,7 @@ let cities = [];
 
 function getCityWeather(city) {
     // create initial query 
-    let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
 
     fetch(queryURL).then(function(response){
         response.json().then(function(data){
