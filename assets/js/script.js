@@ -1,4 +1,4 @@
-let apiKey = config.apiKey;
+let apiKey = "280e29c95499e87b3c88dd1a18a7ecfa";
 let cityInput = document.querySelector("#city");
 let cityForm = document.querySelector("#city-form");
 let weatherContainer = document.querySelector("#weather-container");
