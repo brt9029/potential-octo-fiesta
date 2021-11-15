@@ -5,7 +5,7 @@ let weatherContainer = document.querySelector("#weather-container");
 let citySearch = document.querySelector("#city-search");
 let forecast = document.querySelector("#forecast");
 let image = document.createElement("img");
-let cityLog = document.querySelector("#previous-city")
+let cityLog = document.querySelector("#previous-city");
 let cities = [];
 
 function getCityWeather(city) {
@@ -62,20 +62,12 @@ function displayCity(city, citySearched) {
     fetch(secondQuery).then(function(response) {
         response.json().then(function(data) {
             fiveDayForecast(data);
-            citiesSearched(citySearched)
         })
     })
 
     let list = document.createElement("li");
-
-    if (cities.length >= 5){
-        document.querySelector("ul > li").remove();
-        document.querySelector("#previous-city").appendChild(list);
-        list.textContent = citySearched;
-    } else {
-        document.querySelector("#previous-city").appendChild(list);
-        list.textContent = citySearched;
-    }
+    document.querySelector("#previous-city").appendChild(list);
+    list.textContent = citySearched;
     
     document.querySelector("#previous-city").appendChild(list);
     list.textContent = citySearched;
@@ -104,6 +96,7 @@ function displayCity(city, citySearched) {
     citySearch.textContent = city.name + " " + today;
     citySearch.appendChild(image);
     weatherContainer.appendChild(humidity);
+    citiesSearched(citySearched)
 
 };
 
@@ -182,13 +175,11 @@ function fiveDayForecast(data) {
 };
 
 function citiesSearched(citySearched) {
-    // add the last 5 cities searched into the array then save into local storage
-    if(cities.length >= 5){
-        cities.shift()
-        cities.push({city: citySearched});
-    } else {
-        cities.push({city: citySearched});
+    // append to searched cities
+    if(!cities){
+        cities = []
     }
+    cities.push({city: citySearched});
 
     localStorage.setItem("cities", JSON.stringify(cities));
 };
@@ -198,8 +189,8 @@ function loadCities() {
     cities = JSON.parse(localStorage.getItem("cities"));
     
     // check to see if anything was saved previously then load
-    if(citiesLoaded.length){
-            for(let i = 0; i < citiesLoaded.length; i++) {
+    if(citiesLoaded){
+        for(let i = 0; i < citiesLoaded.length; i++) {
             let loadedCity = document.createElement("li");
             
             document.querySelector("#previous-city").appendChild(loadedCity);
