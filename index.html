@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header class="hero text-center text-white pt-3 bg-dark">
+        <h1 class="pt-3">
+            Weather Dashboard
+        </h1>
+    </header>
+
+    <main class="text-center" id="main">
+        <div class="col-3 float-left">
+          <h3 class="ml-4">
+            Search for a City:
+          </h3>
+          <form class="border-bottom pb-3" id="city-form" >
+            <input class="form-input form-control-lg w-50" name="city" id="city" type="text" autofocus="true" />
+            <button type="submit" class="btn btn-primary mt-3 w-50">
+                Search
+            </button>
+          </form>
+          <!-- enter previous results here -->
+          <div class="card ml-auto mr-auto bg-info mt-3 w-50">
+              <ul class="list-group text-white" id="previous-city">
+              </ul>
+          </div>
+        </div>
+
+        <div class="col-8 ml-auto mr-auto" id="result">
+            <h2 class="subtitle" id="subtitle">
+              <span id="city-search"></span>
+            </h2>
+            <div id="weather-container" class="list-group"></div>
+        </div>
+        
+    </main>
+
+    <div id="forecast"></div>
+
+    <div id="card-deck-holder"></div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script type="text/javascript" src="config.js"></script>
+<script src="./assets/js/script.js"></script>
+</html>
