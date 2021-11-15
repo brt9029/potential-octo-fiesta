@@ -197,12 +197,16 @@ function loadCities() {
     let citiesLoaded = JSON.parse(localStorage.getItem("cities"));
     cities = JSON.parse(localStorage.getItem("cities"));
     
-    for(let i = 0; i < citiesLoaded.length; i++) {
-        let loadedCity = document.createElement("li");
-        
-        document.querySelector("#previous-city").appendChild(loadedCity);
-        loadedCity.textContent = citiesLoaded[i].city;
+    // check to see if anything was saved previously then load
+    if(citiesLoaded.length){
+            for(let i = 0; i < citiesLoaded.length; i++) {
+            let loadedCity = document.createElement("li");
+            
+            document.querySelector("#previous-city").appendChild(loadedCity);
+            loadedCity.textContent = citiesLoaded[i].city;
+        }
     }
+    
     
 };
 
